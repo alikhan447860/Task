@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 
 public class OTPReader {
 
+    private static final Pattern OTP_PATTERN = Pattern.compile("\\b\\d{6}\\b");
+
     public static String getLatestOTP() throws Exception {
 
         String email = ConfigReader.getInstance().getProperty("gmail.email");
@@ -22,65 +24,86 @@ public class OTPReader {
         Session session = Session.getInstance(props);
 
         Store store = session.getStore("imap");
-
-        store.connect(
-                "imap.gmail.com",
-                993,
-                email,
-                password
-        );
+        store.connect("imap.gmail.com", 993, email, password);
 
         Folder inbox = store.getFolder("INBOX");
-        inbox.open(Folder.READ_ONLY);
 
-        // Search emails from Scopely
-        Message[] messages = inbox.search(new FromStringTerm("scopely"));
+        // Retry for 30 seconds
+        for (int retry = 1; retry <= 15; retry++) {
 
-        if (messages.length == 0) {
-            messages = inbox.getMessages();
-        }
-
-        // Read latest email first
-        for (int i = messages.length - 1; i >= 0; i--) {
-
-            Message message = messages[i];
-
-            String content = getText(message);
-
-            Pattern pattern = Pattern.compile("\\b\\d{6}\\b");
-            Matcher matcher = pattern.matcher(content);
-
-            if (matcher.find()) {
-
+            if (inbox.isOpen()) {
                 inbox.close(false);
-                store.close();
-
-                return matcher.group();
             }
+
+            inbox.open(Folder.READ_ONLY);
+
+            System.out.println("Checking Gmail... Attempt : " + retry);
+
+            Message[] messages = inbox.getMessages();
+
+            // Read latest mail first
+            for (int i = messages.length - 1; i >= 0; i--) {
+
+                Message message = messages[i];
+
+                String from = message.getFrom()[0].toString();
+                String subject = message.getSubject();
+
+                // Ignore non-Scopely mails
+                if (!(from.toLowerCase().contains("scopely")
+                        || (subject != null && subject.toLowerCase().contains("scopely")))) {
+                    continue;
+                }
+
+                System.out.println("--------------------------------");
+                System.out.println("Message No : " + message.getMessageNumber());
+                System.out.println("Subject    : " + subject);
+                System.out.println("Time       : " + message.getReceivedDate());
+
+                String content = getText(message);
+
+                Matcher matcher = OTP_PATTERN.matcher(content);
+
+                if (matcher.find()) {
+
+                    String otp = matcher.group();
+
+                    System.out.println("Latest OTP = " + otp);
+
+                    inbox.close(false);
+                    store.close();
+
+                    return otp;
+                }
+            }
+
+            Thread.sleep(2000);
         }
 
-        inbox.close(false);
+        if (inbox.isOpen()) {
+            inbox.close(false);
+        }
+
         store.close();
 
-        throw new RuntimeException("OTP not found.");
-
+        throw new RuntimeException("OTP not received within 30 seconds.");
     }
 
-    private static String getText(Part p) throws Exception {
+    private static String getText(Part part) throws Exception {
 
-        if (p.isMimeType("text/*")) {
-            return p.getContent().toString();
+        if (part.isMimeType("text/*")) {
+            return part.getContent().toString();
         }
 
-        if (p.isMimeType("multipart/*")) {
+        if (part.isMimeType("multipart/*")) {
 
-            Multipart mp = (Multipart) p.getContent();
+            Multipart multipart = (Multipart) part.getContent();
 
-            for (int i = 0; i < mp.getCount(); i++) {
+            for (int i = 0; i < multipart.getCount(); i++) {
 
-                String text = getText(mp.getBodyPart(i));
+                String text = getText(multipart.getBodyPart(i));
 
-                if (!text.isEmpty()) {
+                if (text != null && !text.isEmpty()) {
                     return text;
                 }
             }

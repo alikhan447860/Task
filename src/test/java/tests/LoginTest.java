@@ -1,7 +1,9 @@
 package tests;
 
-import base.BaseTest;
 import org.testng.annotations.Test;
+
+import base.BaseTest;
+import config.ConfigReader;
 import pages.LoginPage;
 import utilities.OTPReader;
 
@@ -14,23 +16,22 @@ public class LoginTest extends BaseTest {
 
         LoginPage loginPage = new LoginPage();
 
+        String email = ConfigReader.getInstance().getProperty("gmail.email");
+
         loginPage
                 .acceptCookiesIfPresent()
                 .clickProfileIcon()
                 .clickLoginButton()
                 .clickContinueWithEmail()
-                .enterEmail("khanali6068@gmail.com")
+                .enterEmail(email)
                 .clickContinueButton();
 
-        // Wait for OTP email to arrive
         Thread.sleep(3000);
 
-        // Read OTP from Gmail
         String otp = OTPReader.getLatestOTP();
 
         LOG.info("OTP Retrieved Successfully: {}", otp);
 
-        // Enter OTP and Sign In
         loginPage
                 .enterOTP(otp)
                 .clickSignIn();
