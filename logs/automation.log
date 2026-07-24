@@ -1,0 +1,29 @@
+2026-07-24 14:46:18.747 [main] INFO  listeners.TestListener - ========== SUITE STARTED: Default test ==========
+2026-07-24 14:46:18.840 [main] INFO  base.BaseTest - ===== Test Setup Started =====
+2026-07-24 14:46:18.860 [main] INFO  config.ConfigReader - Configuration properties loaded successfully from: C:\Users\Lenovo\git\AutomationFramework\src\test\resources\config.properties
+2026-07-24 14:46:18.861 [main] INFO  driver.DriverFactory - Initializing WebDriver for browser: 'chrome' | headless: false
+2026-07-24 14:46:19.901 [main] INFO  driver.DriverFactory - Creating Chrome WebDriver
+2026-07-24 14:46:23.360 [main] INFO  driver.DriverFactory - WebDriver configured: maximize, delete cookies, timeouts set
+2026-07-24 14:46:23.361 [main] INFO  driver.DriverFactory - WebDriver initialized successfully for thread: 1
+2026-07-24 14:46:34.056 [main] INFO  listeners.TestListener - ========== TEST STARTED: verifyLoginNavigation ==========
+2026-07-24 14:46:34.163 [main] INFO  reports.ExtentReportManager - Creating Extent Report test: verifyLoginNavigation
+2026-07-24 14:46:54.864 [main] INFO  reports.ExtentManager - Extent Reports initialized successfully at: C:\Users\Lenovo\git\AutomationFramework\reports\extent-report.html
+2026-07-24 14:46:54.943 [main] INFO  base.BaseTest - ===== Starting Complete Login Flow =====
+2026-07-24 14:46:55.497 [main] INFO  pages.LoginPage - Clicking Profile Icon
+2026-07-24 14:46:55.809 [main] INFO  pages.LoginPage - Clicking Login Button
+2026-07-24 14:46:56.214 [main] INFO  utilities.ElementActions - Element clicked successfully
+2026-07-24 14:46:56.214 [main] INFO  pages.LoginPage - Clicking Continue with Email
+2026-07-24 14:47:00.615 [main] INFO  pages.LoginPage - Entering Email
+2026-07-24 14:47:04.565 [main] INFO  pages.LoginPage - Clicking Continue Button
+2026-07-24 14:47:12.652 [main] INFO  base.BaseTest - OTP Retrieved Successfully: 042753
+2026-07-24 14:47:12.652 [main] INFO  pages.LoginPage - Entering OTP: 042753
+2026-07-24 14:47:13.521 [main] INFO  pages.LoginPage - Waiting for Sign In button to become enabled
+2026-07-24 14:47:13.596 [main] INFO  pages.LoginPage - Clicked Sign In
+2026-07-24 14:47:13.597 [main] INFO  base.BaseTest - ===== Login Completed Successfully =====
+2026-07-24 14:47:13.604 [main] INFO  listeners.TestListener - ========== TEST PASSED: verifyLoginNavigation ==========
+2026-07-24 14:47:13.613 [main] INFO  base.BaseTest - ===== Test Teardown Started =====
+2026-07-24 14:47:13.613 [main] INFO  driver.DriverFactory - Quitting WebDriver for thread: 1
+2026-07-24 14:47:14.365 [main] INFO  base.BaseTest - WebDriver quit successfully
+2026-07-24 14:47:14.366 [main] INFO  reports.ExtentReportManager - Flushing Extent Report
+2026-07-24 14:47:15.174 [main] INFO  listeners.TestListener - ========== SUITE FINISHED: Default test ==========
+2026-07-24 14:47:15.174 [main] INFO  reports.ExtentReportManager - Flushing Extent Report
