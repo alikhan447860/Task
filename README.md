@@ -1,13 +1,22 @@
 # AutomationFramework
 
-A production-ready Selenium Automation Framework built with Java 17, Selenium 4.x, TestNG, Maven, and POM design pattern.
+-> A ready Selenium Automation Framework built with Java 17, Selenium 4.x, TestNG, Maven, and POM design pattern.
+
+-> In this framework, the data has been passed using parameters from config.properties file and kept the scripts separate.
+
+-> In this framework, only web automation is covered since I implemented another framework POC for mobile browser testing.
+
+-> This framework is mature, robust and supports data driven testing, cross browser testing and can be executed across all the 
+platforms and devices.
+
+-> BONUS QUESTION - Tried to cover that too but due to the slowness of the game and loading time, didn't execute it. you can find the code for bonus question too.
 
 ---
 
 ## Tech Stack
 
 | Component       | Technology           |
-|----------------|----------------------|
+|----------------|-----------------------|
 | Language        | Java 17              |
 | Automation      | Selenium 4.x         |
 | Test Framework  | TestNG               |
@@ -66,24 +75,22 @@ AutomationFramework/
 ## How to Run
 
 ### Run all tests:
-```bash
+
 mvn clean test
-```
+
 
 ### Run specific test:
-```bash
+
 mvn clean test -Dtest=LoginTest
-```
+
 
 ### Run with specific browser:
-```bash
 mvn clean test -Dbrowser=firefox
-```
+
 
 ### Run headless:
-```bash
 mvn clean test -Dheadless=true
-```
+
 
 ---
 
