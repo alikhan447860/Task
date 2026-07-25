@@ -1,11 +1,15 @@
 package base;
 
+import java.time.Duration;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import driver.DriverFactory;
 import utilities.ElementActions;
@@ -77,7 +81,9 @@ public abstract class BasePage {
     public WebElement waitForVisibility(WebElement element) {
         return WaitUtil.waitForVisibility(element);
     }
-public WebElement waitForVisibility(By locator) {
+    
+    
+    public WebElement waitForVisibility(By locator) {
 		WebElement element = DriverFactory.getDriver().findElement(locator);
 		return WaitUtil.waitForVisibility(element);
 	}
@@ -87,6 +93,7 @@ public WebElement waitForVisibility(By locator) {
      * @param element the WebElement to wait for
      * @return the clickable WebElement
      */
+    
     public WebElement waitForClickable(WebElement element) {
         return WaitUtil.waitForClickable(element);
     }
@@ -95,11 +102,13 @@ public WebElement waitForVisibility(By locator) {
         WebElement element = DriverFactory.getDriver().findElement(locator);
         return WaitUtil.waitForClickable(element);
     }
+    
     /**
      * Scrolls the page to bring the given element into view.
      *
      * @param element the WebElement to scroll to
      */
+    
     public void scrollIntoView(WebElement element) {
         JavaScriptUtil.scrollIntoView(element);
     }
@@ -109,6 +118,7 @@ public WebElement waitForVisibility(By locator) {
      *
      * @param element the WebElement to click
      */
+    
     public void jsClick(WebElement element) {
         JavaScriptUtil.jsClick(element);
     }
@@ -180,4 +190,22 @@ public WebElement waitForVisibility(By locator) {
     public String getAttribute(WebElement element, String attribute) {
         return ElementActions.getAttribute(element, attribute);
     }
+    
+    
+    public void jsScrollToLocatorTest(WebElement element) {
+    	 WebDriverWait wait = new WebDriverWait(
+  	            DriverFactory.getDriver(),
+  	            Duration.ofSeconds(20));
+    	  ((JavascriptExecutor) DriverFactory.getDriver())
+          .executeScript("arguments[0].scrollIntoView({block:'center'});", element);
+ 
+    }
+    
+    public void jsClickLocatorTest(WebElement element) {
+    	 WebDriverWait wait = new WebDriverWait(
+  	            DriverFactory.getDriver(),
+  	            Duration.ofSeconds(20));
+  	  ((JavascriptExecutor) DriverFactory.getDriver())
+		  .executeScript("arguments[0].click();", element);
+	}
 }
