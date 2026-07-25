@@ -1,6 +1,8 @@
 package pages;
 
 import base.BasePage;
+import org.testng.Assert;
+
 import driver.DriverFactory;
 
 import java.time.Duration;
@@ -9,9 +11,13 @@ import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.SearchContext;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sikuli.script.FindFailed;
+import org.sikuli.script.Pattern;
+import org.sikuli.script.Screen;
 
 /**
  * Page Object for Stumble Guys Login Flow
@@ -43,7 +49,13 @@ public class LoginPage extends BasePage {
     
     private final By signInButton =
             By.cssSelector("button[class*='OneTimeCodeInput_submitButton']");
+    
+    private By playerName = By.xpath("(//span[contains(@class,'font-lilita') and starts-with(normalize-space(),'Player')])[2]");
 
+    private By checkYourInboxHeading =
+            By.xpath("//*[@id='form76']/div[1]/div[2]/h2");
+    
+    private By playNowButton = By.xpath("//span[text()='Play Now!']");
     /* ===========================
         COOKIE ACCEPT (Shadow DOM)
        =========================== */
@@ -147,6 +159,26 @@ public class LoginPage extends BasePage {
 
         return this;
     }
+    
+    public LoginPage verifyCheckYourInboxHeading() {
+
+        LOG.info("Verifying 'Check your inbox!' heading");
+
+        String actualHeading = waitForVisibility(checkYourInboxHeading)
+                .getText()
+                .trim();
+
+        LOG.info("Actual Heading : {}", actualHeading);
+
+        Assert.assertEquals(
+                actualHeading,
+                "Check your inbox!",
+                "Incorrect heading displayed.");
+
+        LOG.info("'Check your inbox!' heading verified successfully");
+
+        return this;
+    }
     public LoginPage clickContinueButton() {
 
         LOG.info("Clicking Continue Button");
@@ -220,5 +252,70 @@ public class LoginPage extends BasePage {
         LOG.info("Clicked Sign In");
 
         return this;
+    }
+    public LoginPage verifyPlayerName(String expectedPlayerName) {
+
+        LOG.info("Verifying Player Name");
+
+        String actualPlayerName = waitForVisibility(playerName)
+                .getText()
+                .trim();
+
+        LOG.info("Actual Player Name : {}", actualPlayerName);
+
+        Assert.assertEquals(
+                actualPlayerName,
+                expectedPlayerName,
+                "Player name mismatch!");
+
+        LOG.info("Player Name Verified Successfully");
+
+        return this;
+    }
+    
+    public LoginPage clickPlayNow() {
+
+        LOG.info("Clicking Play Now Button");
+
+        waitForVisibility(playNowButton).click();
+
+        LOG.info("Play Now Button Clicked Successfully");
+
+        return this;
+    }
+    public LoginPage switchToPlayWindow() throws InterruptedException {
+
+        LOG.info("Switching to Play Window");
+
+        WebDriver driver = DriverFactory.getDriver();
+
+        String parentWindow = driver.getWindowHandle();
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        wait.until(d -> d.getWindowHandles().size() > 1);
+
+        for (String window : driver.getWindowHandles()) {
+
+            if (!window.equals(parentWindow)) {
+
+                driver.switchTo().window(window);
+                break;
+            }
+        }
+
+        LOG.info("Successfully Switched to Play Window");
+
+       
+        Thread.sleep(55000); // Wait for the new window to load
+        return this;
+    }
+    public void clickPlayImage() throws Exception {
+    	Thread.sleep(45000);
+    	LOG.info("Clicking Play Image using SikuliX");
+    	Screen screen = new Screen();
+    	Pattern playImage = new Pattern("src/test/resources/images/play_button.png");
+    	screen.wait(playImage, 10);
+    	screen.click(playImage);
     }
 }

@@ -1,53 +1,38 @@
-2026-07-24 20:00:51.547 [main] INFO  listeners.TestListener - ========== SUITE STARTED: Default test ==========
-2026-07-24 20:00:51.592 [main] INFO  base.BaseTest - ===== Test Setup Started =====
-2026-07-24 20:00:51.603 [main] INFO  config.ConfigReader - Configuration properties loaded successfully from: C:\Users\Lenovo\git\AutomationFramework\src\test\resources\config.properties
-2026-07-24 20:00:51.603 [main] INFO  driver.DriverFactory - Initializing WebDriver for browser: 'chrome' | headless: false
-2026-07-24 20:00:52.087 [main] INFO  driver.DriverFactory - Creating Chrome WebDriver
-2026-07-24 20:00:53.412 [main] INFO  driver.DriverFactory - WebDriver configured: maximize, delete cookies, timeouts set
-2026-07-24 20:00:53.413 [main] INFO  driver.DriverFactory - WebDriver initialized successfully for thread: 1
-2026-07-24 20:00:56.894 [main] INFO  listeners.TestListener - ========== TEST STARTED: verifyPurchaseFlow ==========
-2026-07-24 20:00:56.896 [main] INFO  reports.ExtentReportManager - Creating Extent Report test: verifyPurchaseFlow
-2026-07-24 20:00:57.188 [main] INFO  reports.ExtentManager - Extent Reports initialized successfully at: C:\Users\Lenovo\git\AutomationFramework\reports\extent-report.html
-2026-07-24 20:00:57.203 [main] INFO  base.BaseTest - ===== Starting Purchase Flow =====
-2026-07-24 20:00:57.331 [main] INFO  pages.LoginPage - Clicking Profile Icon
-2026-07-24 20:00:57.431 [main] INFO  pages.LoginPage - Clicking Login Button
-2026-07-24 20:00:57.613 [main] INFO  utilities.ElementActions - Element clicked successfully
-2026-07-24 20:00:57.614 [main] INFO  pages.LoginPage - Clicking Continue with Email
-2026-07-24 20:01:00.390 [main] INFO  pages.LoginPage - Entering Email
-2026-07-24 20:01:01.427 [main] INFO  pages.LoginPage - Clicking Continue Button
-2026-07-24 20:01:15.968 [main] INFO  base.BaseTest - OTP Retrieved Successfully : 201649
-2026-07-24 20:01:15.968 [main] INFO  pages.LoginPage - Entering OTP: 201649
-2026-07-24 20:01:16.358 [main] INFO  pages.LoginPage - Waiting for Sign In button to become enabled
-2026-07-24 20:01:16.397 [main] INFO  pages.LoginPage - Clicked Sign In
-2026-07-24 20:01:16.397 [main] INFO  base.BaseTest - Login Successful
-2026-07-24 20:01:16.399 [main] INFO  pages.ShopPage - Closing Welcome Popup
-2026-07-24 20:01:36.442 [main] INFO  pages.ShopPage - Popup Not Displayed
-2026-07-24 20:01:36.442 [main] INFO  pages.ShopPage - Clicking Profile Icon
-2026-07-24 20:01:36.515 [main] INFO  utilities.JavaScriptUtil - Element scrolled into view
-2026-07-24 20:01:36.585 [main] INFO  utilities.JavaScriptUtil - JavaScript click executed successfully
-2026-07-24 20:01:36.586 [main] INFO  pages.ShopPage - Opening Shop
-2026-07-24 20:01:36.654 [main] INFO  utilities.JavaScriptUtil - JavaScript click executed successfully
-2026-07-24 20:01:36.654 [main] INFO  pages.ShopPage - Reading Shop Categories
-2026-07-24 20:01:39.446 [main] INFO  pages.ShopPage - Category : THE VAULT
-2026-07-24 20:01:39.460 [main] INFO  pages.ShopPage - Category : GEMS
-2026-07-24 20:01:39.470 [main] INFO  pages.ShopPage - Category : CODES
-2026-07-24 20:01:39.471 [main] INFO  pages.ShopPage - All Categories Validated Successfully
-2026-07-24 20:01:39.472 [main] INFO  pages.ShopPage - Clicking The Vault Category
-2026-07-24 20:01:41.096 [main] INFO  pages.ShopPage - Selecting First Product
-2026-07-24 20:01:41.152 [main] INFO  pages.ShopPage - Selected Product Price : ₹90.00
-2026-07-24 20:01:41.160 [main] INFO  utilities.JavaScriptUtil - Element scrolled into view
-2026-07-24 20:01:41.175 [main] INFO  utilities.JavaScriptUtil - JavaScript click executed successfully
-2026-07-24 20:01:41.175 [main] INFO  base.BaseTest - Selected Product Price : ₹90.00
-2026-07-24 20:01:41.175 [main] INFO  pages.ShopPage - Waiting for Payment Page...
-2026-07-24 20:01:44.301 [main] INFO  pages.ShopPage - Payment Page Opened Successfully
-2026-07-24 20:01:44.311 [main] INFO  pages.ShopPage - Current URL : https://www.stumbleguys.com/shop/vault
-2026-07-24 20:01:44.542 [main] INFO  utilities.ScreenshotUtil - Screenshot captured successfully: C:\Users\Lenovo\git\AutomationFramework\screenshots\PaymentPage_20260724_200144.png
-2026-07-24 20:01:44.543 [main] INFO  base.BaseTest - Selected Product Price : ₹90.00
-2026-07-24 20:01:44.544 [main] INFO  base.BaseTest - ===== Purchase Flow Completed Successfully =====
-2026-07-24 20:01:44.548 [main] INFO  listeners.TestListener - ========== TEST PASSED: verifyPurchaseFlow ==========
-2026-07-24 20:01:44.555 [main] INFO  base.BaseTest - ===== Test Teardown Started =====
-2026-07-24 20:01:44.555 [main] INFO  driver.DriverFactory - Quitting WebDriver for thread: 1
-2026-07-24 20:01:44.937 [main] INFO  base.BaseTest - WebDriver quit successfully
-2026-07-24 20:01:44.937 [main] INFO  reports.ExtentReportManager - Flushing Extent Report
-2026-07-24 20:01:45.277 [main] INFO  listeners.TestListener - ========== SUITE FINISHED: Default test ==========
-2026-07-24 20:01:45.278 [main] INFO  reports.ExtentReportManager - Flushing Extent Report
+2026-07-24 21:39:21.954 [main] INFO  listeners.TestListener - ========== SUITE STARTED: Default test ==========
+2026-07-24 21:39:22.053 [main] INFO  base.BaseTest - ===== Test Setup Started =====
+2026-07-24 21:39:22.074 [main] INFO  config.ConfigReader - Configuration properties loaded successfully from: C:\Users\Lenovo\git\AutomationFramework\src\test\resources\config.properties
+2026-07-24 21:39:22.075 [main] INFO  driver.DriverFactory - Initializing WebDriver for browser: 'chrome' | headless: false
+2026-07-24 21:39:24.786 [main] INFO  driver.DriverFactory - Creating Chrome WebDriver
+2026-07-24 21:39:27.935 [main] INFO  driver.DriverFactory - WebDriver configured: maximize, delete cookies, timeouts set
+2026-07-24 21:39:27.937 [main] INFO  driver.DriverFactory - WebDriver initialized successfully for thread: 1
+2026-07-24 21:39:33.917 [main] INFO  listeners.TestListener - ========== TEST STARTED: verifyPlayNowNavigation ==========
+2026-07-24 21:39:33.922 [main] INFO  reports.ExtentReportManager - Creating Extent Report test: verifyPlayNowNavigation
+2026-07-24 21:39:35.487 [main] INFO  reports.ExtentManager - Extent Reports initialized successfully at: C:\Users\Lenovo\git\AutomationFramework\reports\extent-report.html
+2026-07-24 21:39:35.520 [main] INFO  base.BaseTest - ===== Starting Play Now Test =====
+2026-07-24 21:39:35.833 [main] INFO  pages.LoginPage - Clicking Profile Icon
+2026-07-24 21:39:36.168 [main] INFO  pages.LoginPage - Clicking Login Button
+2026-07-24 21:39:36.665 [main] INFO  utilities.ElementActions - Element clicked successfully
+2026-07-24 21:39:36.665 [main] INFO  pages.LoginPage - Clicking Continue with Email
+2026-07-24 21:39:40.915 [main] INFO  pages.LoginPage - Entering Email
+2026-07-24 21:39:41.882 [main] INFO  pages.LoginPage - Clicking Continue Button
+2026-07-24 21:39:42.044 [main] INFO  pages.LoginPage - Verifying 'Check your inbox!' heading
+2026-07-24 21:39:46.050 [main] INFO  pages.LoginPage - Actual Heading : Check your inbox!
+2026-07-24 21:39:46.058 [main] INFO  pages.LoginPage - 'Check your inbox!' heading verified successfully
+2026-07-24 21:40:00.854 [main] INFO  base.BaseTest - OTP Retrieved Successfully : 640996
+2026-07-24 21:40:00.855 [main] INFO  pages.LoginPage - Entering OTP: 640996
+2026-07-24 21:40:02.209 [main] INFO  pages.LoginPage - Waiting for Sign In button to become enabled
+2026-07-24 21:40:02.343 [main] INFO  pages.LoginPage - Clicked Sign In
+2026-07-24 21:40:02.344 [main] INFO  pages.LoginPage - Clicking Play Now Button
+2026-07-24 21:40:08.264 [main] INFO  pages.LoginPage - Play Now Button Clicked Successfully
+2026-07-24 21:40:08.264 [main] INFO  pages.LoginPage - Switching to Play Window
+2026-07-24 21:40:08.707 [main] INFO  pages.LoginPage - Successfully Switched to Play Window
+2026-07-24 21:41:48.730 [main] INFO  pages.LoginPage - Clicking Play Image using SikuliX
+2026-07-24 21:42:00.812 [main] ERROR listeners.TestListener - ========== TEST FAILED: verifyPlayNowNavigation ==========
+2026-07-24 21:43:36.240 [main] INFO  utilities.ScreenshotUtil - Screenshot captured successfully: C:\Users\Lenovo\git\AutomationFramework\screenshots\verifyPlayNowNavigation_20260724_214200.png
+2026-07-24 21:43:36.256 [main] INFO  listeners.TestListener - Failure screenshot attached to report: C:\Users\Lenovo\git\AutomationFramework\screenshots\verifyPlayNowNavigation_20260724_214200.png
+2026-07-24 21:43:36.289 [main] INFO  base.BaseTest - ===== Test Teardown Started =====
+2026-07-24 21:43:36.289 [main] INFO  driver.DriverFactory - Quitting WebDriver for thread: 1
+2026-07-24 21:43:39.776 [main] INFO  base.BaseTest - WebDriver quit successfully
+2026-07-24 21:43:39.778 [main] INFO  reports.ExtentReportManager - Flushing Extent Report
+2026-07-24 21:43:41.543 [main] INFO  listeners.TestListener - ========== SUITE FINISHED: Default test ==========
+2026-07-24 21:43:41.544 [main] INFO  reports.ExtentReportManager - Flushing Extent Report

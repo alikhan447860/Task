@@ -7,16 +7,16 @@ import config.ConfigReader;
 import pages.LoginPage;
 import utilities.OTPReader;
 
-public class LoginTest extends BaseTest {
+public class PlayNowTest extends BaseTest {
 
-    @Test(description = "Verify Complete Login Flow")
-    public void verifyLoginNavigation() throws Exception {
+    @Test(description = "Verify Play Now Navigation")
+    public void verifyPlayNowNavigation() throws Exception {
 
-        LOG.info("===== Starting Complete Login Flow =====");
-
-        LoginPage loginPage = new LoginPage();
+        LOG.info("===== Starting Play Now Test =====");
 
         String email = ConfigReader.getInstance().getProperty("gmail.email");
+
+        LoginPage loginPage = new LoginPage();
 
         loginPage
                 .acceptCookiesIfPresent()
@@ -31,14 +31,15 @@ public class LoginTest extends BaseTest {
 
         String otp = OTPReader.getLatestOTP();
 
-        LOG.info("OTP Retrieved Successfully: {}", otp);
+        LOG.info("OTP Retrieved Successfully : {}", otp);
 
         loginPage
                 .enterOTP(otp)
                 .clickSignIn()
-                .clickProfileIcon()
-                .verifyPlayerName("PLAYER KPR7FRICRS");
+                .clickPlayNow()
+                .switchToPlayWindow()
+                .clickPlayImage();
 
-        LOG.info("===== Login Completed Successfully =====");
+        LOG.info("===== Play Now Test Completed Successfully =====");
     }
 }
